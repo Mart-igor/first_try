@@ -7,40 +7,48 @@
     <title>Document</title>
     {% comment %} bootstrap {% endcomment %}
     <link href="{% static 'bootstrap\css\bootstrap.min.css' %}" rel="stylesheet">
+    {% comment %} fotn space {% endcomment %}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Trispace:wght@100..800&display=swap" rel="stylesheet">
     {% comment %} css {% endcomment %}
     <link href="{% static 'css/base.css' %}">
+    <link href="{% static 'img/logo.jpg' %}" rel="stylesheet" type="image/x-icon">
 </head>
 <body>
-    <header class="header sticky-top">
-        <div class="header-container d-flex">
-            <navbar class="header-nav pt-4">
-                <ul class="header-list d-flex">
-                    <li>
-                        <a href="#" class="nav-a m-3">Home</a>
-                    </li>
-                    <li>
-                        <a href="#" class="nav-a m-3">Shop</a>
-                    </li>
-                </ul>
-            </navbar>
-            {% comment %} use absolute position {% endcomment %}
-            <div class="header-logo">
-                <a href="#"><img src="{% static 'img/logo.jpg' %}" alt="logo" class="heavy-logo"></a>
+    <div class="wrapper">
+        <header class="header sticky-top">
+            <div class="header-container d-flex">
+                <navbar class="header-nav pt-4">
+                    <ul class="header-list d-flex">
+                        <li>
+                            <a href="#" class="nav-a m-3">Home</a>
+                        </li>
+                        <li>
+                            <a href="#" class="nav-a m-3">Shop</a>
+                        </li>
+                    </ul>
+                </navbar>
+                {% comment %} use absolute position {% endcomment %}
+                <div class="header-logo">
+                    <a href="#"><img src="{% static 'img/logo.jpg' %}" alt="logo" class="heavy-logo"></a>
+                </div>
+                <div class="profile">
+                    <a href="#">Login</a>
+                </div>
             </div>
-            <div class="profile">
-                <a href="#">Login</a>
-            </div>
+        </header>
+        <div class="container">
+            {% block content %}
+            {% endblock %}
         </div>
-    </header>
-    <div class="container">
-        {% block content %}
-        {% endblock %}
+        <img src="{% static 'img/left-up.jpg' %}" class="frame1" alt="left-up">
+        <img src="{% static 'img/left-down.jpg' %}" class="frame2" alt="left-down">
+        <img src="{% static 'img/right-up.jpg' %}" class="frame3" alt="right-up">
+        <img src="{% static 'img/right-down.jpg' %}" class="frame4" alt="right-down">
+        <footer class="footer">Footer</footer>
     </div>
-    <img src="{% static 'img/left-up.jpg' %}" class="frame1" alt="left-up">
-    <img src="{% static 'img/left-down.jpg' %}" class="frame2" alt="left-down">
-    <img src="{% static 'img/right-up.jpg' %}" class="frame3" alt="right-up">
-    <img src="{% static 'img/right-down.jpg' %}" class="frame4" alt="right-down">
-
+    
     <script src="{% static 'C:\Users\Trio\twoway\main\static\bootstrap\js\bootstrap.bundle.min.js' %}}"></script>
 </body>
 </html>
