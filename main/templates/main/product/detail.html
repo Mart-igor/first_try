@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block title %}
+    {{planet.name}}
+{% endblock title %}
+
+{% block container %}
+    <div class="detail-planet">
+        <div class="ditail-img">
+            <img src="{% if planet.image %}{{planet.imgage.url}}{% else %}{% static 'img/non.jpg' %}{% endif %}" alt="-" class="detail-image">
+        </div>
+        <div class="detail-description">
+            <h2>{{planet.name}}</h2>
+            <h3>Category: {{planet.category}}</h3>
+            <p>Description: {{planet.description|linebreaks}}</p>
+            {% if planet.discount %}
+                <div class="cart-discount">
+                    <p class="line">{{planet.price}}</p>
+                    <p>{{planet.sell_price}}</p>
+                </div>
+            {% else %}
+            <div class="cart-discount">
+                <p class="price">{{planet.price}}</p>
+            </div>
+            {% endif %}
+            <a href="#" class="card-btn">Add to cart</a>
+        </div>
+    </div>
+{% endblock container %}

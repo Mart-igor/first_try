@@ -1,5 +1,34 @@
-{% include 'main/base.html' %}
+{% extends "main/base.html" %}
+{% load static %}
 
-{% block conteiner%}
+{% block title %}MainPage{% endblock title %}
 
-{% endblock %}
+{% block container %}
+    <section class="home d-flex flex-column">
+        <div class="home-title">
+            <a href="#" class="home-btn mt-4">All planets</a>
+        </div>
+        <div class="home-recomendation">
+            <div class="rec-title">Popular planets</div>
+        </div>
+        <div class="home-cards">
+            {% for planet in  planets%}
+                <a href="{{ planet.get_absolute_url}}" class="home-card">
+                    <img src="{{planet.image.url}}" alt="-" class="card-img">
+                    <h5 class="title-card">{{planet.name}}</h5>
+                    {% if planet.discount %}
+                        <div class="cart-discount">
+                            <p class="line">{{planet.price}}</p>
+                            <p>{{planet.sell_price}}</p>
+                        </div>
+                    {% else %}
+                    <div class="cart-discount">
+                        <p class="price">{{planet.price}}</p>
+                    </div>
+                    {% endif %}
+                </a>
+            {% endfor %}
+        </div>
+        <img src="{% static 'img/planets_v2.jpg' %}" class="logoplanets" alt="logo-planets">
+    </section>
+{% endblock container %}
