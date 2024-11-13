@@ -19,6 +19,9 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('planet_list_by_cat',{'category_slug': self.slug})
 
 
 class Planet(models.Model):
