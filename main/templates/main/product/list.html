@@ -43,6 +43,21 @@
                     </div>
                 {% endfor %}
             </div>
+            <ul class="pagination">
+                <li class="{% if not planets.has_previous %}desable{% endif %}">
+                <a href="{% if planets.has_previous %}?page={{planets.revious_page_number}}{% endif %}">Prebious</a>
+                </li>
+                {% for page in planets.paginator.page_range %}
+                {% if page>=planets.number|add:-2 and page<=planets.number|add:2 %}
+                    <li>
+                    <a href="?page={{page}}" class="{% if planget.number == page %}disabled{% endif %}">{{page}}</a>
+                    </li>
+                {% endif %}{% endfor %}
+                <li class="{% if not planets.has_next %}desable{% endif %}">
+                    <a href="{% if planets.has_next %}?page={{planets.next_page_number}}{% endif %}">Next</a>
+                    </li>
+
+            </ul>
         </div>
     </div>
 {% endblock content %}
