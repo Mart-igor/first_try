@@ -24,7 +24,15 @@
                 <p class="price">{{planet.price}}</p>
             </div>
             {% endif %}
-            <a href="#" class="card-btn">Add to cart</a>
+            <form action="{% url "cart:cart_add" product.id %}" class="qform" methor='post'>
+                <div class="cart-form">
+                    {{cart_product_form}}
+                    {% csrf_token %}
+
+                </div>
+                <input type="submit" class="add-to-cat-btn" value="Add to card">
+            </form>
+            {% comment %} /<a href="{% url "cart:" %}" class="card-btn">Add to cart</a> {% endcomment %}
         </div>
     </div>
 {% endblock container %}
