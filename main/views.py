@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from models import Planet, Category
 from django.core.paginator import Paginator
+from cart.forms import CartAddPlanet
 
 
 def popular_list(request):
@@ -13,9 +14,11 @@ def planet_detail(request, planet_slug):
     planet = get_object_or_404(Planet, 
                                slug=planet_slug, 
                                available=True)
+    cart_product_form = CartAddPlanet
     return render(request, 
                   'main/product/detail.html',
-                  {'planet':planet})
+                  {'planet':planet,
+                   'cart_product_form': cart_product_form})
 
 def planet_list(request, category_slug=None):
     page = request.GET.get('page', 1)

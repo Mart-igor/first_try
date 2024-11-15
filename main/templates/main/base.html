@@ -34,7 +34,15 @@
                     <a href="#"><img src="{% static 'img/logo.jpg' %}" alt="logo" class="heavy-logo"></a>
                 </div>
                 <div class="profile">
-                    <a href="#">Login</a>
+                    <a href="{% url "cart:cart_detail" %}"><img src="{% static 'img/cat.png' %}" clas="cart" alt=""></a>
+                    <a href="#" class='m-3'>Login</a>
+                    <p class="cart_quantity">
+                        {% with cart_quantity=cart|length %}
+                            {% if cart_quantity > 0 %}
+                                {{cart_quantity}}
+                            {% endif %}
+                        {% endwith %}
+                    </p>
                 </div>
             </div>
         </header>
